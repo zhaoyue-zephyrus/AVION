@@ -5,7 +5,7 @@ AVION is short for A VIdeo model in ONe day. AVION (meaning plane in French and 
 [**Training a Large Video Model on a Single Machine in a Day**](http://arxiv.org/abs/xxxx.yyyyy)  
 Yue Zhao, Philipp Kr&auml;henb&uuml;hl  
 UT Austin  
-[arxiv](http://arxiv.org/abs/xxxxx.yyyyy) | [bibtex](#citing-avion) 
+[arxiv](http://arxiv.org/abs/2309.16669) | [bibtex](#citing-avion) 
 
 
 ## Installation
@@ -75,7 +75,7 @@ For more details, please refer to [MODEL_ZOO](./docs/MODEL_ZOO.md).
 @article{zhao2023training,
   title={Training a large video model on a single machine in a day},
   author={Zhao, Yue and Kr{\"a}henb{\"u}hl, Philipp},
-  journal={arXiv preprint arXiv:xxxx.yyyyy},
+  journal={arXiv preprint arXiv:2309.16669},
   year={2023}
 }
 ```
