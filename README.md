@@ -2,7 +2,7 @@
 AVION is short for A VIdeo model in ONe day. AVION (meaning plane in French and Spanish) is fast.
 
 
-[**Training a Large Video Model on a Single Machine in a Day**](http://arxiv.org/abs/xxxx.yyyyy)  
+[**Training a Large Video Model on a Single Machine in a Day**](http://arxiv.org/abs/2309.16669)  
 Yue Zhao, Philipp Kr&auml;henb&uuml;hl  
 UT Austin  
 [arxiv](http://arxiv.org/abs/2309.16669) | [bibtex](#citing-avion) 
