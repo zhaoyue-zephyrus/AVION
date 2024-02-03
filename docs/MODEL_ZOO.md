@@ -114,3 +114,54 @@ PYTHONPATH=.:third_party/decord/python/ torchrun \
 |   no     |   ViT-B  |   67.9    |   57.6    |    47.3     | [best epoch](https://utexas.box.com/s/2fkvtc67m0f82wmm5cnqfo7wg951lobv) | b40f3e |
 |   yes    |   ViT-B  |   70.0    |   59.4    |    49.5     | [best epoch](https://utexas.box.com/s/8iokob6ahb94gp1bqbmauhpeunqwx79j) | 6c3c5e |
 |   yes    |   ViT-L  |   73.0    |   65.4    |    54.4     | [best epoch](https://utexas.box.com/s/crnqo9bu0owtfz4yc1yqf8hz6g0ze39b) | 1871f4 |
+
+
+## Pre-training and Fine-tuning VideoMAE
+
+###
+<details><summary> Train a VideoMAE on Kinetics with ViT-B </summary>
+
+```bash
+mkdir experiments/videomae_pretrain_vitb_lion/
+PYTHONPATH=.:third_party/decord/python/ torchrun \
+    --nproc_per_node=4 scripts/main_videomae_pretrain.py \
+    --model VIDEOMAE_VITB16 \
+    --use-flash-attn-at-encoder --use-flash-attn-at-decoder \
+    --batch-size 64 --channel-last \
+    --fused-decode-crop --use-multi-epochs-loader --optimizer lion \
+    -j 8 \
+    --output-dir experiments/videomae_pretrain_vitb_lion 2>&1 | tee experiments/videomae_pretrain_vitb_lion/log.txt
+```
+
+</details>
+
+<details><summary> Finetune a pretrained VideoMAE model on Kinetics-400 </summary>
+
+```bash
+# training
+mkdir experiments/videomae_finetune_vitb_lion_e800/
+PYTHONPATH=.:third_party/decord/python/ torchrun \
+    --nproc_per_node=8 scripts/main_videomae_finetune.py \
+    --use-flash-attn --channel-last \
+    --finetune experiments/videomae_pretrain_vitb_lion/checkpoint_00800.pt \
+    -j 8 \
+    --output-dir experiments/videomae_finetune_vitb_lion_e800/ 2>&1 | tee experiments/videomae_finetune_vitb_lion_e800/log.txt
+```
+
+```bash
+# testing
+PYTHONPATH=.:third_party/decord/python/ torchrun \
+    --nproc_per_node=8 scripts/main_videomae_finetune.py \
+    --use-flash-attn --channel-last \
+    --finetune experiments/videomae_pretrain_vitb_lion/checkpoint_00800.pt \
+    -j 8 \
+    --output-dir experiments/videomae_finetune_vitb_lion_e800/ \
+    --evaluate \
+    --resume experiments/videomae_finetune_vitb_lion_e800/checkpoint_best.pt 2>&1 | tee experiments/videomae_finetune_vitb_lion_e800/eval_log.txt
+```
+</details>
+
+|           | Backbone |   Top-1   |   Top-5   |                                checkpoint                                 | md5sum |
+| :-------: | :------: | :-------: | :-------: | :-----------------------------------------------------------------------: | :----: |
+| pre-train |   ViT-B  |   67.9    |   57.6    | [700-th epoch](https://utexas.box.com/s/61vjh8k4q3ia8wlns0rmkbnazzxipua9) | 2bbcaf |
+| fine-tune |   ViT-B  |   80.0    |   94.5    |   [best epoch](https://utexas.box.com/s/p9tigkrop86f60ae6o85nbxfwh53dghm) | 5cd5c5 |
