@@ -123,8 +123,8 @@ PYTHONPATH=.:third_party/decord/python/ torchrun \
     --fused-decode-crop \
     --use-multi-epochs-loader \
     --pretrain-model experiments/pretrain_lavila_vitb/checkpoint_best.pt \
-    --resume \     # additional to the training script
-    --evaluate     # additional to the training script
+    --resume ${PATH_TO}/avion_finetune_cls_lavila_vitb_best.pt \  # additional to the training script
+    --evaluate                                                    # additional to the training script
 ```
 
 </details>
