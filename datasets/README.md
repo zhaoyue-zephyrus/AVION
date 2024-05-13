@@ -59,6 +59,10 @@ The fold should look like this:
 
     Similar to Ego4D, we also cut videos into 15-second-long chunks and resize their smaller size. We provide a [resized, chunked version](https://utexas.box.com/v/ek100-320p-15sec-30fps).
 
+    ```bash
+    wget https://utexas.box.com/shared/static/rulikvams7leevaej74bn6oyo6gviybs.zip -O EK100_320p_15sec_30fps_libx264.zip
+    ```
+
 3. Download annotations
 
     ```bash
