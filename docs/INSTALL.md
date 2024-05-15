@@ -58,8 +58,8 @@ It should print out the decord build path `['<YOUR_AVION_HOME_PATH>/third_party/
 
 ```bash
 cp /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30 <YOUR_CONDA_HOME_PATH>/envs/avion/lib/
-rm  <YOUR_CONDA_HOME_PATH>/envs/avion/lib/libdecord.so
-ln -s <YOUR_CONDA_HOME_PATH>/envs/avion/lib/libdecord.so.6.0.30 <YOUR_CONDA_HOME_PATH>/envs/avion/lib/libdecord.so
+rm  <YOUR_CONDA_HOME_PATH>/envs/avion/lib/libstdc++.so
+ln -s <YOUR_CONDA_HOME_PATH>/envs/avion/lib/libstdc++.so.6.0.30 <YOUR_CONDA_HOME_PATH>/envs/avion/lib/libstdc++.so
 ```
 
 * If you see an incorrect path, e.g. `<YOUR_CONDA_HOME_PATH>/envs/avion/lib/python3.10/site-packages/decord`, it means that you are using a wrong decord which may have previously been installed using `pip install decord`. You can `pip uninstall decord` and re-install following the steps above.
