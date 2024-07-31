@@ -99,7 +99,7 @@ def get_args_parser():
     parser.add_argument('--lr-start', default=1e-6, type=float, help='initial warmup lr')
     parser.add_argument('--lr-end', default=1e-5, type=float, help='minimum final lr')
     parser.add_argument('--update-freq', default=1, type=int, help='optimizer update frequency (i.e. gradient accumulation steps)')
-    parser.add_argument('--wd', default=0.05, type=float)
+    parser.add_argument('--wd', default=4e-05, type=float)
     parser.add_argument('--betas', default=(0.9, 0.999), nargs=2, type=float)
     parser.add_argument('--eps', default=1e-8, type=float)
     parser.add_argument('--eval-freq', default=5, type=int)
